@@ -27,6 +27,9 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController conBil1 = TextEditingController();
+    TextEditingController conBil2 = TextEditingController();
+    TextEditingController conhasil = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -35,50 +38,70 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text(
-              'Result = 0',
-              textAlign: TextAlign.left,
-              textDirection: TextDirection.ltr,
-            ),
-            SizedBox(height: 16), // add vertical space of 16 pixels
+            SizedBox(height: 16),
             TextField(
+              controller: conBil1,
               decoration: InputDecoration(
-                hintText: 'Enter first number',
+                hintText: 'ANGKA PERTAMA',
               ),
             ),
-            SizedBox(height: 16), // add vertical space of 16 pixels
+            SizedBox(height: 16),
             TextField(
+              controller: conBil2,
               decoration: InputDecoration(
-                hintText: 'Enter last number',
+                hintText: 'ANGKA KEDUA',
               ),
             ),
-            SizedBox(height: 16), // add vertical space of 16 pixels
-            ElevatedButton(
-              onPressed: () {
-                // Action when button is pressed
-              },
-              child: Text('Add'),
+            SizedBox(height: 16),
+            TextField(
+              controller: conhasil,
+              decoration: InputDecoration(
+                hintText: 'HASIL',
+              ),
             ),
-            SizedBox(height: 16), // add vertical space of 16 pixels
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Action when button is pressed
+                double bilangan1 = double.parse(conBil1.text);
+                double bilangan2 = double.parse(conBil2.text);
+                double hasil = bilangan1 + bilangan2;
+
+                conhasil.text = hasil.toString();
               },
-              child: Text('Substract'),
+              child: Text('Tambah'),
             ),
-            SizedBox(height: 16), // add vertical space of 16 pixels
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Action when button is pressed
+                double bilangan1 = double.parse(conBil1.text);
+                double bilangan2 = double.parse(conBil2.text);
+                double hasil = bilangan1 - bilangan2;
+
+                conhasil.text = hasil.toString();
               },
-              child: Text('Multiply'),
+              child: Text('Pengurangan'),
             ),
-            SizedBox(height: 16), // add vertical space of 16 pixels
+            SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                // Action when button is pressed
+                double bilangan1 = double.parse(conBil1.text);
+                double bilangan2 = double.parse(conBil2.text);
+                double hasil = bilangan1 * bilangan2;
+
+                conhasil.text = hasil.toString();
               },
-              child: Text('Divide'),
+              child: Text('Perkalian'),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                double bilangan1 = double.parse(conBil1.text);
+                double bilangan2 = double.parse(conBil2.text);
+                double hasil = bilangan1 / bilangan2;
+
+                conhasil.text = hasil.toString();
+              },
+              child: Text('Pembagian'),
             ),
           ],
         ),
